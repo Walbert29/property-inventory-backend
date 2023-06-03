@@ -82,3 +82,7 @@ This endpoint allows a user to like a property
 ### v1.0.0
 
 - Creation of the README with the project guidelines
+
+### v1.1.0
+
+- Creating unit tests
