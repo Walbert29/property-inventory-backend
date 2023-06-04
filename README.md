@@ -62,6 +62,12 @@ The development of the project follows a layer-based architecture. The code is o
     cd src/
     python main.py
     ```
+## ▶️Run test
+    
+```bash
+cd test/
+python -m unittest ./property_inventory.py
+```
 
 ## 🏁Endpoints
 
@@ -97,6 +103,11 @@ This endpoint allows a user to like a property
 - The test cases have been defined.
 - README update with the latest improvements and implementations.
 - The properties microservice was created, with the respective validations of the models, queries to the database and transformation of the resulting data.
+
+### v1.3.0
+
+- Update of the README with the information of the proposed model for PropertyLiked.
+- Development, implementation and testing of management challenge.
 
 # Like Service
 This microservice is intended to allow users who are registered on the platform to "Like" properties of interest to them.
@@ -139,3 +150,15 @@ It is necessary the creation of a microservice that is in charge of linking the 
 2. The Backend is in charge of consuming the user DB to verify the existence of the user in the platform. If the user is verified, the flow continues, otherwise Front is notified that the user was not found.
 3. After verifying the user, it is required to verify the existence of the property in the database, for which the resource is consumed and the record is expected to be successfully saved.
 ![Infrastructure Like Services](https://raw.githubusercontent.com/Walbert29/property-inventory-backend/main/resources/StructureLikeService.png)
+
+# Challenge
+The challenge of rolling numbers in block, was carried out and tested with unit tests.
+## Access the challenge:
+1. Access the challenge folder and the test subfolder
+    ```bash
+    cd challenge/test
+    ```
+2. Run unit tests 
+    ```bash
+    python -m unittest ./challenge.py
+    ```
