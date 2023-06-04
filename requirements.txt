@@ -1,2 +1,4 @@
 mysql-connector-python==8.0.33
 python-dotenv==0.20.0
+fastapi==0.73.0
+uvicorn==0.17.4
