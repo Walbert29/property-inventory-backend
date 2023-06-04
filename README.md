@@ -16,16 +16,18 @@ This API is in charge of processing the information of a property inventory, the
 The development of the project follows a layer-based architecture. The code is organized as follows:
 
 - `src/`: Where the main source code of the project is stored.
-    - `schemas/`: Directory used to define the structure, validation and serialization of the data.
     - `controllers/`: Directory where input requests are processed.
+    - `crud/`: Organize, store, and execute database operations.
     - `database/`: Directory where database connections are controlled.
+    - `enums/`: Define the limited sets of options or states that can be used.
+    - `schemas/`: Directory used to define the structure, validation and serialization of the data.
     - `services/`: Directory where the business logic is grouped and processed.
     - `main.py/`: Main entry point.
     - `settings.py/`: File where the microservice configurations are managed.
+- `test/`:Where the project tests are executed.
 - `.gitignore/`: Specify which files should be ignored by Git.
 - `README.md/`: Provides information and documentation about the project.
 - `requirements.txt/`: Used to specify project dependencies.
-- `test/`:Where the project tests are executed.
 
 ## ▶️Configuration and execution
 
@@ -63,16 +65,19 @@ The development of the project follows a layer-based architecture. The code is o
 
 ## 🏁Endpoints
 
-### Search properties
-This endpoint returns the properties that meet the criteria sent
+### **Search properties**
+This endpoint returns the properties that meet the criteria sent.
+
+The filters are applied through query params, so there is no JSON that should be sent by Front, but there are parameters wanted in the URL, described below.
+
 - **Path:** `/properties`
 - **Method:** GET
 - **Params:**
-    - `status_id` (int): Filter by status
+    - `status_ids` List[int]: Filter by status
     - `year_construction` (int): Filter by year of construction
     - `city` (str): Filter by city
 
-### React property
+### **React property**
 This endpoint allows a user to like a property
 - **Path:** `/property/{property_id}/user/{user_id}`
 - **Method:** POST
@@ -81,8 +86,14 @@ This endpoint allows a user to like a property
 
 ### v1.0.0
 
-- Creation of the README with the project guidelines
+- Creation of the README with the project guidelines.
 
 ### v1.1.0
 
-- Creating unit tests
+- Creation unit tests.
+
+### v1.2.0
+
+- The test cases have been defined.
+- README update with the latest improvements and implementations.
+- The properties microservice was created, with the respective validations of the models, queries to the database and transformation of the resulting data.
