@@ -162,3 +162,19 @@ The challenge of rolling numbers in block, was carried out and tested with unit 
     ```bash
     python -m unittest ./challenge.py
     ```
+
+# Improvement proposal
+Analyzing the current structure of the database, some aspects can be improved that could generate large impacts on the performance of microservices.
+
+## Database
+Some suggested changes to the database that may impact the results and performance are:
+1. Standardize the cities, with an open field, data can be lost at the moment in which users make the queries, a standardization with the minimum values ​​such as ID, name and description.
+2. Manage the state of the properties from its main table, avoiding joining the history in the daily use of property listings. In large volumes of data, the history can be a table that fills up with information very quickly, so always using it to know the status of a property generates a high performance cost by having to consult so much data.
+The proposed solution is to create a new field that is a foreign key of status_history, this being the one that would be consumed to know the current state of a property.
+This diagram illustrates the points raised.
+![Infrastructure Like Services](https://raw.githubusercontent.com/Walbert29/property-inventory-backend/main/resources/improve-model.png)
+
+## Microservices
+In the previously mentioned point about taking the state of the property, it can present significant changes in the microservices, this is due to the fact that the status field that will be in property is required to be always updated with the status history field.
+For this, the creation of a new microservice is suggested, its main function will be to ensure the updating of both tables without any information leakage between them, controlling and standardizing the management of said fields.
+![Infrastructure Like Services](https://raw.githubusercontent.com/Walbert29/property-inventory-backend/main/resources/explain-services.png)
